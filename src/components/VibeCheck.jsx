@@ -3,7 +3,7 @@ import { supabase } from '../lib/supabase'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   ArrowRight, Check, Loader2, Trophy, Footprints, Beer, 
-  Music, Clock, MapPin, Users, Shield, Zap 
+  Music, Clock, MapPin, Users, Shield, Zap, Mail
 } from 'lucide-react'
 
 // --- CONFIGURATION ---
@@ -118,7 +118,7 @@ const COURSES = [
 ]
 
 export default function VibeCheck() {
-  const [view, setView] = useState('intro')
+  const [view, setView] = useState('intro') // 'intro' | 'quiz' | 'final' | 'success'
   const [step, setStep] = useState(0)
   const [answers, setAnswers] = useState({})
   const [favCourse, setFavCourse] = useState('')
@@ -126,8 +126,14 @@ export default function VibeCheck() {
   const [consent, setConsent] = useState(false)
   const [submitting, setSubmitting] = useState(false)
 
-  const handleStart = () => {
+  // PATH A: Start Quiz
+  const handleStartQuiz = () => {
     setView('quiz')
+  }
+
+  // PATH B: Join Waitlist Directly
+  const handleJoinDirect = () => {
+    setView('final')
   }
 
   const handleOptionSelect = (key, value) => {
@@ -155,7 +161,7 @@ export default function VibeCheck() {
     setSubmitting(true)
 
     const payload = {
-      ...answers,
+      ...answers, // Will be empty if they took the direct path (safe)
       fav_course: favCourse,
       email: email,
       consent_email_updates: true,
@@ -217,7 +223,7 @@ export default function VibeCheck() {
           
           <AnimatePresence mode='wait'>
             
-            {/* 1. INTRO SCREEN */}
+            {/* 1. INTRO SCREEN (UPDATED) */}
             {view === 'intro' && (
               <motion.div 
                 key="intro"
@@ -232,30 +238,55 @@ export default function VibeCheck() {
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-golf-green to-emerald-400">ruin your round.</span>
                   </h2>
                   
+                  {/* UPDATED TRUST COPY */}
                   <p className="text-slate-200 text-lg leading-relaxed font-light">
-                    We've all been there: Paired with a weirdo, a slow-player, or someone who treats the fairway like a frat party.
+                    We’ve all been there: you get paired with someone who plays too slow, rushes every shot, or just doesn’t match your vibe. One mismatch can wreck the whole round.
                   </p>
-                  
-                  <div className="bg-emerald-900/20 p-5 rounded-xl border border-emerald-500/20 text-left relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-1 h-full bg-golf-green"></div>
-                    <p className="text-emerald-100 text-sm">
-                      <strong className="text-golf-green block mb-1 uppercase tracking-wider text-xs">The Solution</strong>
-                      We're building a marketplace to match you with local golfers who share your vibe, pace, and style.
-                    </p>
+                </div>
+
+                <div className="space-y-3">
+                  {/* PRIMARY CTA: JOIN WAITLIST */}
+                  <button 
+                    onClick={handleJoinDirect}
+                    className="w-full bg-golf-green hover:bg-emerald-400 text-golf-dark font-black py-4 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2 group transition-all transform hover:scale-[1.02]"
+                  >
+                    Join the Beta Waitlist <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform"/>
+                  </button>
+
+                  {/* SECONDARY CTA: VIBE CHECK */}
+                  <button 
+                    onClick={handleStartQuiz}
+                    className="w-full bg-transparent border-2 border-white/10 hover:border-white/30 text-slate-300 font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2"
+                  >
+                    Start Vibe Check (Optional)
+                  </button>
+                </div>
+
+                {/* TRUST LINE */}
+                <p className="text-[10px] text-slate-500 mt-4 uppercase tracking-wider">
+                  No spam. Unsubscribe anytime. Calgary + area beta first.
+                </p>
+
+                {/* HOW IT WORKS STRIP */}
+                <div className="mt-8 pt-6 border-t border-white/5 grid grid-cols-3 gap-2 text-center">
+                  <div>
+                    <div className="text-golf-green mb-1 flex justify-center"><Mail size={16}/></div>
+                    <p className="text-[10px] text-slate-400 leading-tight">1. Join waitlist</p>
+                  </div>
+                  <div>
+                    <div className="text-golf-green mb-1 flex justify-center"><Zap size={16}/></div>
+                    <p className="text-[10px] text-slate-400 leading-tight">2. Set vibe (opt)</p>
+                  </div>
+                  <div>
+                    <div className="text-golf-green mb-1 flex justify-center"><Shield size={16}/></div>
+                    <p className="text-[10px] text-slate-400 leading-tight">3. Play w/ confidence</p>
                   </div>
                 </div>
 
-                <button 
-                  onClick={handleStart}
-                  className="w-full bg-golf-green hover:bg-emerald-400 text-golf-dark font-black py-4 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2 group transition-all transform hover:scale-[1.02]"
-                >
-                  Start Vibe Check <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform"/>
-                </button>
-                <p className="text-xs text-slate-400 mt-4 font-medium">Join the Calgary 2026 Waitlist</p>
               </motion.div>
             )}
 
-            {/* 2. QUIZ SCREEN */}
+            {/* 2. QUIZ SCREEN (UNCHANGED) */}
             {view === 'quiz' && (
               <motion.div
                 key={`q-${step}`}
@@ -289,10 +320,11 @@ export default function VibeCheck() {
                     <div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i === step ? 'w-8 bg-golf-green shadow-[0_0_10px_rgba(16,185,129,0.5)]' : 'w-2 bg-slate-700'}`}></div>
                   ))}
                 </div>
+                <p className="text-center text-xs text-slate-500 mt-6">Takes ~60 seconds. Optional.</p>
               </motion.div>
             )}
 
-            {/* 3. FINAL INPUTS */}
+            {/* 3. FINAL INPUTS (UNCHANGED) */}
             {view === 'final' && (
               <motion.div
                 key="final"
@@ -376,7 +408,7 @@ export default function VibeCheck() {
               </motion.div>
             )}
 
-            {/* 4. SUCCESS / FEATURES SCREEN */}
+            {/* 4. SUCCESS / FEATURES SCREEN (UNCHANGED) */}
             {view === 'success' && (
                <motion.div 
                  key="success"
