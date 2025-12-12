@@ -45,19 +45,49 @@ const questions = [
   }
 ]
 
-// Extracted & Sorted Course List
+// Extracted, Cleaned & Sorted Course List
 const COURSES = [
   "Apple Creek Golf Course",
   "Blue Devil Golf Club",
   "Brewster’s Kananaskis Ranch Golf Course",
   "Canmore Golf & Curling Club",
+  "Confederation Park Golf Course",
+  "Crystal Ridge Golf Club",
+  "D’Arcy Ranch Golf Club",
+  "Eaglequest Golf – Douglasdale",
   "Fairmont Banff Springs Golf Course",
   "Fox Hollow Golf Course",
-  "Kananaskis Country Golf Course",
+  "Golfuture YYC (Golf Fanatics Bow River Greens)",
+  "HeatherGlen Golf Course",
+  "Heritage Pointe Golf Club",
+  "Inglewood Golf & Curling Club",
+  "Kananaskis Country Golf Course (Mt. Kidd & Mt. Lorette)",
+  "Lakeside Golf Club (Lakeside Greens)",
+  "LivingStone Golf Course",
+  "Lynx Ridge Golf Club",
   "McCall Lake Golf Course",
-  "Silvertip Resort",
+  "McKenzie Meadows Golf Club",
+  "Mickelson National Golf Club",
+  "Oxbow Country Golf Course",
+  "Redwood Meadows Golf & Country Club",
+  "River Spirit Golf Club",
+  "River’s Edge Golf Club",
+  "Serenity Golf Club",
+  "Silvertip Golf Course",
+  "Sirocco Golf Club",
+  "Speargrass Golf Course",
+  "Springbank Links Golf Club",
   "Stewart Creek Golf & Country Club",
-  "The Winston Golf Club (Calgary)"
+  "Strathmore Golf Club",
+  "The Canal at Delacour (Delacour Golf Club)",
+  "The Links of GlenEagles",
+  "The Track Golf Course (formerly Boulder Creek)",
+  "The Winston Golf Club (Calgary)",
+  "Turner Valley Golf Club",
+  "Valley Ridge Golf Club",
+  "Water Valley Golf Club",
+  "Wintergreen Golf & Country Club",
+  "Woodside Golf Course"
 ]
 
 export default function VibeCheck() {
