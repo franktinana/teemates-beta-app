@@ -45,6 +45,21 @@ const questions = [
   }
 ]
 
+// Extracted & Sorted Course List
+const COURSES = [
+  "Apple Creek Golf Course",
+  "Blue Devil Golf Club",
+  "Brewster’s Kananaskis Ranch Golf Course",
+  "Canmore Golf & Curling Club",
+  "Fairmont Banff Springs Golf Course",
+  "Fox Hollow Golf Course",
+  "Kananaskis Country Golf Course",
+  "McCall Lake Golf Course",
+  "Silvertip Resort",
+  "Stewart Creek Golf & Country Club",
+  "The Winston Golf Club (Calgary)"
+]
+
 export default function VibeCheck() {
   const [view, setView] = useState('intro')
   const [step, setStep] = useState(0)
@@ -73,6 +88,10 @@ export default function VibeCheck() {
     // Validation
     if (!consent) {
         alert("Please agree to receive updates to join the Beta.")
+        return
+    }
+    if (!favCourse) {
+        alert("Please select a favorite course.")
         return
     }
 
@@ -232,16 +251,28 @@ export default function VibeCheck() {
                        <p className="text-slate-300 text-sm">Where do we send your invite?</p>
                     </div>
 
+                    {/* COURSE DROPDOWN */}
                     <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-golf-green ml-1 mb-2 block">Favorite Course in Calgary?</label>
-                      <input 
-                        type="text" 
-                        required
-                        value={favCourse}
-                        onChange={(e) => setFavCourse(e.target.value)}
-                        placeholder="e.g. Blue Devil / Heritage Pointe"
-                        className="w-full bg-black/40 border border-slate-700 rounded-xl px-5 py-4 text-white focus:ring-2 focus:ring-golf-green focus:border-transparent outline-none transition-all placeholder:text-slate-600 font-medium"
-                      />
+                      <label className="text-xs font-bold uppercase tracking-wider text-golf-green ml-1 mb-2 block">Favorite Course</label>
+                      <div className="relative">
+                        <select
+                          required
+                          value={favCourse}
+                          onChange={(e) => setFavCourse(e.target.value)}
+                          className="w-full bg-black/40 border border-slate-700 rounded-xl px-5 py-4 text-white focus:ring-2 focus:ring-golf-green focus:border-transparent outline-none transition-all appearance-none font-medium cursor-pointer"
+                        >
+                          <option value="" disabled className="text-slate-500">Select a course...</option>
+                          {COURSES.map(course => (
+                            <option key={course} value={course} className="bg-slate-900 text-white">
+                              {course}
+                            </option>
+                          ))}
+                          <option value="Other" className="bg-slate-900 text-white">Other / Not Listed</option>
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
+                          <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                      </div>
                     </div>
 
                     <div>
