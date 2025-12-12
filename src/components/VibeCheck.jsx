@@ -51,6 +51,7 @@ export default function VibeCheck() {
   const [answers, setAnswers] = useState({})
   const [favCourse, setFavCourse] = useState('')
   const [email, setEmail] = useState('')
+  const [consent, setConsent] = useState(false)
   const [submitting, setSubmitting] = useState(false)
 
   const handleStart = () => {
@@ -68,12 +69,21 @@ export default function VibeCheck() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    
+    // Validation
+    if (!consent) {
+        alert("Please agree to receive updates to join the Beta.")
+        return
+    }
+
     setSubmitting(true)
 
     const payload = {
       ...answers,
       fav_course: favCourse,
-      email: email
+      email: email,
+      consent_email_updates: true,
+      consent_at: new Date().toISOString()
     }
 
     const { error } = await supabase
@@ -113,7 +123,6 @@ export default function VibeCheck() {
               TEE<span className="text-golf-green">MATES</span>
             </h1>
             
-            {/* NEW: Beta Badge (High Visibility) */}
             {view === 'intro' && (
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-golf-green/10 border border-golf-green/30 backdrop-blur-md">
                 <span className="relative flex h-2 w-2">
@@ -147,12 +156,10 @@ export default function VibeCheck() {
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-golf-green to-emerald-400">ruin your round.</span>
                   </h2>
                   
-                  {/* UPDATED: Brighter Text for readability */}
                   <p className="text-slate-200 text-lg leading-relaxed font-light">
                     We've all been there: Paired with a weirdo, a slow-player, or someone who treats the fairway like a frat party.
                   </p>
                   
-                  {/* UPDATED: Green Glow Box for "The Fix" */}
                   <div className="bg-emerald-900/20 p-5 rounded-xl border border-emerald-500/20 text-left relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-1 h-full bg-golf-green"></div>
                     <p className="text-emerald-100 text-sm">
@@ -201,7 +208,6 @@ export default function VibeCheck() {
                   ))}
                 </div>
                 
-                {/* Progress Bar */}
                 <div className="mt-8 flex justify-center gap-2">
                   {questions.map((_, i) => (
                     <div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i === step ? 'w-8 bg-golf-green shadow-[0_0_10px_rgba(16,185,129,0.5)]' : 'w-2 bg-slate-700'}`}></div>
@@ -219,8 +225,8 @@ export default function VibeCheck() {
                 animate="center"
                 exit="exit"
               >
-                 <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="text-center mb-6">
+                 <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="text-center mb-4">
                        <MapPin className="mx-auto text-golf-green mb-2 drop-shadow-lg" size={40} />
                        <h2 className="text-2xl font-bold text-white">Last Step.</h2>
                        <p className="text-slate-300 text-sm">Where do we send your invite?</p>
@@ -250,9 +256,31 @@ export default function VibeCheck() {
                       />
                     </div>
 
+                    {/* CONSENT CHECKBOX */}
+                    <div className="flex items-start gap-3 mt-4 mb-2 p-3 bg-white/5 rounded-lg border border-white/5 hover:border-white/10 transition-colors">
+                      <div className="relative flex items-center pt-0.5">
+                        <input
+                          type="checkbox"
+                          id="consent"
+                          required
+                          checked={consent}
+                          onChange={(e) => setConsent(e.target.checked)}
+                          className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-slate-500 bg-black/40 transition-all checked:border-golf-green checked:bg-golf-green hover:border-golf-green"
+                        />
+                        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-golf-dark opacity-0 peer-checked:opacity-100">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                      </div>
+                      <label htmlFor="consent" className="cursor-pointer text-xs text-slate-300 leading-snug select-none pt-0.5">
+                        I agree to receive emails about TeeMates beta / early access.
+                      </label>
+                    </div>
+
                     <button
                       disabled={submitting}
-                      className="w-full bg-golf-green hover:bg-emerald-400 text-golf-dark font-black py-4 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2 mt-4 transition-all hover:scale-[1.02]"
+                      className="w-full bg-golf-green hover:bg-emerald-400 text-golf-dark font-black py-4 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2 mt-2 transition-all hover:scale-[1.02]"
                     >
                       {submitting ? <Loader2 className="animate-spin" /> : "Secure My Spot"}
                     </button>
