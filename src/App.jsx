@@ -1,10 +1,16 @@
-import { useState, useEffect } from 'react'
-import { supabase } from './lib/supabase'
-import VibeCheck from './components/VibeCheck' // <--- Import the new component
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import VibeCheck from './components/VibeCheck'
+import Unsubscribe from './components/Unsubscribe'
+import ClaimBeta from './components/ClaimBeta'
 
 export default function App() {
-  // We removed the session check because we WANT anonymous users to see this.
   return (
-    <VibeCheck />
+    <Router>
+      <Routes>
+        <Route path="/" element={<VibeCheck />} />
+        <Route path="/unsubscribe" element={<Unsubscribe />} />
+        <Route path="/claim-beta" element={<ClaimBeta />} />
+      </Routes>
+    </Router>
   )
 }
