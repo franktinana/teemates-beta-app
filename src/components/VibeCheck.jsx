@@ -212,7 +212,7 @@ export default function VibeCheck() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-golf-green"></span>
                 </span>
                 <span className="text-xs font-bold text-golf-green uppercase tracking-widest">
-                  Accepting Beta Users
+                  Coming Spring 2026
                 </span>
               </div>
             )}
