@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | TeeMates</title>
+    <meta name="description" content="TeeMates Support - Get help, find answers, and contact our team.">
+    <link rel="canonical" href="https://teemates.ca/support">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-input {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .glass-input:focus {
+            border-color: #10b981;
+            background: rgba(0, 0, 0, 0.5);
+            outline: none;
+        }
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+            transform: translateY(-2px);
+        }
+        details summary { cursor: pointer; }
+        details summary::-webkit-details-marker { display: none; }
+        details[open] .faq-arrow { transform: rotate(180deg); }
+    </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-panel">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="text-xl font-bold text-emerald-400">TeeMates</a>
+            <div class="flex gap-6 text-sm">
+                <a href="/privacy" class="text-slate-400 hover:text-white transition-colors">Privacy</a>
+                <a href="/terms" class="text-slate-400 hover:text-white transition-colors">Terms</a>
+                <a href="/support" class="text-white">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 pt-24 pb-16">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4">How can we help?</h1>
+            <p class="text-slate-400 text-lg">Find answers to common questions or get in touch with our team.</p>
+        </div>
+
+        <!-- FAQ Section -->
+        <section class="glass-panel rounded-2xl p-8 mb-8">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="text-2xl">❓</span>
+                Frequently Asked Questions
+            </h2>
+
+            <div class="space-y-4">
+                <!-- FAQ: Getting Started -->
+                <details class="bg-slate-800/50 rounded-xl overflow-hidden group">
+                    <summary class="p-5 flex justify-between items-center hover:bg-slate-800/80 transition-colors">
+                        <span class="font-medium">How do I create an account?</span>
+                        <svg class="faq-arrow w-5 h-5 text-emerald-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-5 pb-5 text-slate-300">
+                        Download the TeeMates app from the App Store or Google Play. Tap "Get Started" and sign up with your email or Google account. Complete your golf profile to start matching with other players.
+                    </div>
+                </details>
+
+                <!-- FAQ: Matching -->
+                <details class="bg-slate-800/50 rounded-xl overflow-hidden group">
+                    <summary class="p-5 flex justify-between items-center hover:bg-slate-800/80 transition-colors">
+                        <span class="font-medium">How does the matching system work?</span>
+                        <svg class="faq-arrow w-5 h-5 text-emerald-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-5 pb-5 text-slate-300">
+                        TeeMates matches you based on your playing preferences, skill level, availability, and location. You can browse tee times posted by other players and request to join, or create your own tee time and let others find you.
+                    </div>
+                </details>
+
+                <!-- FAQ: Tee Times -->
+                <details class="bg-slate-800/50 rounded-xl overflow-hidden group">
+                    <summary class="p-5 flex justify-between items-center hover:bg-slate-800/80 transition-colors">
+                        <span class="font-medium">How do I book a tee time?</span>
+                        <svg class="faq-arrow w-5 h-5 text-emerald-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-5 pb-5 text-slate-300">
+                        Browse available tee times on the home feed and request to join one that fits your schedule. Or post your own tee time specifying the course, date, time, and how many spots are available. Once your squad is complete, coordinate via the in-app chat.
+                    </div>
+                </details>
+
+                <!-- FAQ: Cancel -->
+                <details class="bg-slate-800/50 rounded-xl overflow-hidden group">
+                    <summary class="p-5 flex justify-between items-center hover:bg-slate-800/80 transition-colors">
+                        <span class="font-medium">Can I cancel or leave a tee time?</span>
+                        <svg class="faq-arrow w-5 h-5 text-emerald-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-5 pb-5 text-slate-300">
+                        Yes, you can leave a tee time from the booking details page. Please try to give as much notice as possible so other players can find a replacement. Frequent last-minute cancellations may affect your reputation in the community.
+                    </div>
+                </details>
+
+                <!-- FAQ: Account -->
+                <details class="bg-slate-800/50 rounded-xl overflow-hidden group">
+                    <summary class="p-5 flex justify-between items-center hover:bg-slate-800/80 transition-colors">
+                        <span class="font-medium">How do I delete my account?</span>
+                        <svg class="faq-arrow w-5 h-5 text-emerald-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-5 pb-5 text-slate-300">
+                        Go to Settings > Account > Delete Account. This will permanently remove your profile and all associated data. This action cannot be undone. You can also email us at support@teemates.ca to request deletion.
+                    </div>
+                </details>
+
+                <!-- FAQ: Report -->
+                <details class="bg-slate-800/50 rounded-xl overflow-hidden group">
+                    <summary class="p-5 flex justify-between items-center hover:bg-slate-800/80 transition-colors">
+                        <span class="font-medium">How do I report a problem or user?</span>
+                        <svg class="faq-arrow w-5 h-5 text-emerald-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-5 pb-5 text-slate-300">
+                        Tap the menu icon on any user profile or tee time and select "Report". Provide details about the issue. Reports are reviewed by our community tribunal system. You can also email support@teemates.ca for urgent issues.
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="glass-panel rounded-2xl p-8">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="text-2xl">✉️</span>
+                Contact Us
+            </h2>
+            <p class="text-slate-400 mb-6">Can't find what you're looking for? Send us a message and we'll get back to you within 24 hours.</p>
+
+            <form id="contact-form" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                        <input type="text" id="name" name="name" required
+                            class="w-full glass-input rounded-xl px-4 py-3 placeholder-slate-500"
+                            placeholder="Your name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full glass-input rounded-xl px-4 py-3 placeholder-slate-500"
+                            placeholder="you@example.com">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="category" class="block text-sm font-medium mb-2">Category</label>
+                    <select id="category" name="category" required
+                        class="w-full glass-input rounded-xl px-4 py-3">
+                        <option value="">Select a category</option>
+                        <option value="account">Account Issues</option>
+                        <option value="booking">Tee Time / Booking</option>
+                        <option value="technical">Technical Problem</option>
+                        <option value="report">Report a User</option>
+                        <option value="feedback">Feedback / Suggestion</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                    <textarea id="message" name="message" rows="5" required
+                        class="w-full glass-input rounded-xl px-4 py-3 placeholder-slate-500 resize-none"
+                        placeholder="Describe your issue or question..."></textarea>
+                </div>
+
+                <button type="submit" id="submit-btn"
+                    class="w-full md:w-auto bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black font-bold py-4 px-8 rounded-xl btn-glow flex items-center justify-center gap-2">
+                    <span>Send Message</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                    </svg>
+                </button>
+            </form>
+
+            <!-- Success Message (hidden by default) -->
+            <div id="success-message" class="hidden mt-6 p-6 bg-emerald-500/20 border border-emerald-500/30 rounded-xl text-center">
+                <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Message Sent!</h3>
+                <p class="text-slate-300">We'll get back to you within 24 hours.</p>
+            </div>
+
+            <!-- Error Message (hidden by default) -->
+            <div id="error-message" class="hidden mt-6 p-6 bg-red-500/20 border border-red-500/30 rounded-xl text-center">
+                <p class="text-red-300">Something went wrong. Please try again or email us directly at <a href="mailto:support@teemates.ca" class="underline">support@teemates.ca</a></p>
+            </div>
+        </section>
+
+        <!-- Alternative Contact -->
+        <section class="text-center mt-12 text-slate-400">
+            <p>Prefer email? Reach us at <a href="mailto:support@teemates.ca" class="text-emerald-400 hover:underline">support@teemates.ca</a></p>
+        </section>
+    </main>
+
+    <footer class="text-center py-8 text-slate-600 text-xs uppercase tracking-widest">
+        &copy; 2026 TinMan Development
+    </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const btn = document.getElementById('submit-btn');
+            const form = e.target;
+            const originalContent = btn.innerHTML;
+
+            // Show loading state
+            btn.innerHTML = '<div class="animate-spin rounded-full h-5 w-5 border-b-2 border-black"></div>';
+            btn.disabled = true;
+
+            const formData = {
+                name: form.name.value,
+                email: form.email.value,
+                category: form.category.value,
+                message: form.message.value
+            };
+
+            try {
+                const res = await fetch('/.netlify/functions/submit-contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (res.ok) {
+                    form.classList.add('hidden');
+                    document.getElementById('success-message').classList.remove('hidden');
+                } else {
+                    document.getElementById('error-message').classList.remove('hidden');
+                    btn.innerHTML = originalContent;
+                    btn.disabled = false;
+                }
+            } catch (err) {
+                console.error(err);
+                document.getElementById('error-message').classList.remove('hidden');
+                btn.innerHTML = originalContent;
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

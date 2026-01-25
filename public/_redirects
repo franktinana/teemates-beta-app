@@ -1,1 +1,7 @@
+# Static pages (serve before SPA catch-all)
+/privacy /privacy.html 200
+/terms /terms.html 200
+/support /support.html 200
+
+# SPA fallback
 /* /index.html 200
