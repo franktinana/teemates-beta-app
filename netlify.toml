@@ -6,3 +6,25 @@
 [dev]
   command = "npm run dev"
   targetPort = 5173
+
+# Static pages — must come before SPA catch-all
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms.html"
+  status = 200
+
+[[redirects]]
+  from = "/support"
+  to = "/support.html"
+  status = 200
+
+# SPA catch-all
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
